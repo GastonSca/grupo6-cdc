@@ -1,0 +1,51 @@
+
+{% extends 'principal/base.html' %}
+{% block contenido %}    
+    <!-- ICONOS DE ACCESO A OTROS HTML -->
+    
+        <section class="container about">
+
+            <div class="about__main">
+{% load static %}
+                <article class="about__icons">
+                    <img src="{% static '/img/gif/perfil.gif' %}" class="about__icon">
+                    <a href="./admin-perfil.html" class="nav__links"><h3 class="about__title"> PERFIL</h3></a>
+                    <p class="about__paragrah">Configura tu perfil de administrador agregando todos los datos pertinentes.</p>
+                </article>
+
+                <article class="about__icons">
+                    <img src="{% static '/img/gif/hogar.gif' %}" class="about__icon">
+                    <a href="./admin-agregar-cabania.html" class="nav__links"><h3 class="about__title"> CABAÑAS</h3></a>
+                    <p class="about__paragrah">Coloca imagenes de tus cabañas y agrega informacion para tus clientes.</p>
+                </article>
+                
+                <article class="about__icons">
+                    <img src="{% static '/img/gif/controlar.gif' %}" class="about__icon">
+                    <a href="./admin-contabilidad.html" class="nav__links"><h3 class="about__title"> CONTABILIDAD</h3></a>
+                    <p class="about__paragrah">Obtiene un informe detallado de los movimientos del complejo de cabañas</p>
+                </article>
+
+                <article class="about__icons">
+                    <img src="{% static '/img/gif/computadora-portatil.gif' %}"class="about__icon">
+                    <a href="./admin-agenda.html" class="nav__links"><h3 class="about__title"> AGENDA</h3></a>
+                    <p class="about__paragrah">Gestiona las reservas de tus clientes tanto las realizadas en la pagina como en recepcion.</p>
+                </article>
+
+                <article class="about__icons">
+                    <img src="{% static '/img/gif/ajustes.gif' %}"class="about__icon">
+                    <a href="#" class="nav__links"><h3 class="about__title"> SERVICIO TECNICO</h3></a>
+                    <p class="about__paragrah">Solicita ayuda cuando quieras y necesites a solo un clik</p>
+                </article>
+
+                <article class="about__icons">
+                    <img src="{% static '/img/gif/burbuja-de-dialogo.gif' %}" class="about__icon">
+                    <a href="/admin-preguntas.html" class="nav__links"><h3 class="about__title"> PREGUNTAS FRECUENTES</h3></a>
+                    <p class="about__paragrah">Consulta las respuestas a las preguntas mas planteadas y continua con tu gestion.</p>
+                </article>
+            </div>
+        </section>
+    
+    {% endblock contenido %}            
+   
+    
+   
