@@ -8,7 +8,8 @@
     <title>Panel de Control</title>
     <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
     <meta name="theme-color" content="#2091F9">
-   
+    {% block css %}
+    {% endblock css%}
     {% load static %}
     <link rel="stylesheet" href="{% static '/principal/css/style.css' %}?v={% now 'U' %}">
 
@@ -25,7 +26,7 @@
 
             <ul class="nav__link nav__link--menu">
                 <li class="nav__items">
-                    <a href="./admin-perfil.html" class="nav__links">Perfil</a>
+                    <a href="{% url 'perfil' %}" class="nav__links">Perfil</a>
                 </li>
                 <li class="nav__items">
                     <a href="./admin-agregar-cabania.html" class="nav__links">Cabañas</a>

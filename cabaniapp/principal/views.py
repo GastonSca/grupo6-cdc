@@ -7,3 +7,4 @@ from django.template import loader
 
 def index(request):
     return render(request,"principal/index.html",{})
+

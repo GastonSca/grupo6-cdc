@@ -1,15 +1,19 @@
 
 {% extends 'principal/base.html' %}
-{% block contenido %}    
+    {% load static %}
+    {% block css %}
+    <link rel="stylesheet" href="{% static '/principal/css/style.css' %}?v={% now 'U' %}">
+    {% endblock css%}
+    {% block contenido %}    
     <!-- ICONOS DE ACCESO A OTROS HTML -->
     
         <section class="container about">
 
             <div class="about__main">
-{% load static %}
+
                 <article class="about__icons">
                     <img src="{% static '/img/gif/perfil.gif' %}" class="about__icon">
-                    <a href="./admin-perfil.html" class="nav__links"><h3 class="about__title"> PERFIL</h3></a>
+                    <a href="{% url 'perfil' %}" class="nav__links"><h3 class="about__title"> PERFIL</h3></a>
                     <p class="about__paragrah">Configura tu perfil de administrador agregando todos los datos pertinentes.</p>
                 </article>
 
