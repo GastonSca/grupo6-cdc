@@ -13,6 +13,7 @@ def perfil(request):
         contacto_form = PerfilForm(request.POST)
        # mensaje = 'Hemos recibido tus datos'
         if contacto_form.is_valid():
+            perfil = contacto_form.save()
             messages.success(request, 'Hemos recibido tus datos')
        
         else:

@@ -1,6 +1,7 @@
 from django import forms
 import re
 from django.forms import ValidationError
+from .models import Perfil
 
 def validar_dni(value):
     if len(value) != 8:
@@ -78,6 +79,18 @@ class PerfilForm(forms.Form):
         widget=forms.TextInput(attrs={'class': 'datos',
                                     'placeholder': 'cod Area- Numero'})
     )
+
+    def save(self, commit=True):
+        perfil = Perfil(
+            nombre=self.cleaned_data['nombre'],
+            apellido=self.cleaned_data['apellido'],
+            dni=self.cleaned_data['dni'],
+            fecha_nacimiento=self.cleaned_data['fecha_nacimiento'],
+            telefono=self.cleaned_data['telefono'],
+        )
+        if commit:
+            perfil.save()
+        return perfil
 '''
     def clean_mensaje(self):
         data = self.cleaned_data['mensaje']
