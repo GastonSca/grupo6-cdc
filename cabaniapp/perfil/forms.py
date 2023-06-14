@@ -60,7 +60,7 @@ class PerfilForm(forms.Form):
     )
     fecha_nacimiento = forms.DateField(
         label='Fecha de Nacimiento',
-        widget=forms.DateInput(attrs={'class': 'datos', 'placeholder': 'DD-MM-YYYY'})
+        widget=forms.DateInput(attrs={'class': 'datos', 'placeholder': 'DD/MM/YYYY'})
     )
     
  
@@ -77,7 +77,7 @@ class PerfilForm(forms.Form):
         required=False,
         validators=(validar_telefono,),
         widget=forms.TextInput(attrs={'class': 'datos',
-                                    'placeholder': 'cod Area- Numero'})
+                                    'placeholder': 'cod Area - Numero (Ej 11-12345678)'})
     )
 
     def save(self, commit=True):
