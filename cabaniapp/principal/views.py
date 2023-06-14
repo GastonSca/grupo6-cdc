@@ -15,7 +15,10 @@ def crear_complejo(request):
         form = ComplejoCabaniasForm(request.POST)
         if form.is_valid():
             form.save()  # Guarda los datos en la base de datos
-            return redirect('../principal/')  # Redirecciona a una página de éxito o a donde desees
+            
+            return redirect('../')  # Redirecciona a una página de éxito o a donde desees
+        else:
+            form.nombre.errors='No puede tener más de 100 caracteres'
 
     else:
         form = ComplejoCabaniasForm()
