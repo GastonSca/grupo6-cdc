@@ -70,7 +70,7 @@ class PerfilForm(forms.Form):
         attrs={'class': 'datos', 'placeholder': 'Dni' , 'for':'dniAdmin', 'id':'lblApellidoAdmin'}
     ),
     validators=(validar_dni,),
-)
+    )
 
     telefono = forms.CharField(
         label='Telefono',
