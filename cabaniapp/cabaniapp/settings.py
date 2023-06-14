@@ -79,14 +79,14 @@ WSGI_APPLICATION = 'cabaniapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'cac',
-        'USER': 'root',
+        'USER': 'postgres',
         'PASSWORD': '1234',
         'HOST': 'localhost',
-        'PORT': '3306',
+        'PORT': '5432',
     }
-}
+} 
 
 
 # Password validation
