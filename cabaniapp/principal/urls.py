@@ -6,4 +6,5 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('crear_complejo/', views.crear_complejo, name='crear_complejo'),
+    path('listar_complejos/', views.listar_complejos, name='listar_complejos'),
 ]

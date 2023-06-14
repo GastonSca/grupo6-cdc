@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+      
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/perfil/css/style.css' %}">
+    <link rel="stylesheet" href="{% static '/principal/css/style.css' %}">
+    <!--link rel="stylesheet" href="./css/admin-header.css"-->
+
+    <title>Listar Complejos</title>
+</head>
+
+<body class="background-style">
+    <!-- HEADER -->
+  <header class="headerXS">
+    
+      <div class="conteXS">
+        <p>Listar complejos</p>
+      </div>
+    
+  </header>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>  
+    </tr>
+    
+      {% for complejo in complejos %}
+      <tr>
+        <td>{{ complejo.id }}</td>
+        <td>{{ complejo.nombre }}</td>
+      </tr>
+    {% endfor %}
+    
+  </table>
+  <button type="reset" class="XSbutton" onclick="window.location='../principal/'">Volver</button>
+  

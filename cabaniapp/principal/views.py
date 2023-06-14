@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.template import loader
 from .forms import ComplejoCabaniasForm
 from django.contrib import messages
+from .models import ComplejoCabanias
 # Create your views here.
 
 def index(request):
@@ -24,3 +25,7 @@ def crear_complejo(request):
         form = ComplejoCabaniasForm()
 
     return render(request, 'complejo/formulario_complejo.html', {'form': form})
+
+def listar_complejos(request):
+    complejos = ComplejoCabanias.objects.all()
+    return render(request, 'complejo/listar_complejos.html', {'complejos': complejos})
