@@ -15,8 +15,9 @@ def crear_complejo(request):
         form = ComplejoCabaniasForm(request.POST)
         if form.is_valid():
             # Procesa los datos del formulario
+            id = form.cleaned_data['id']
             nombre = form.cleaned_data['nombre']
-            direccion = form.cleaned_data['direccion']
+            
             # Realiza las acciones necesarias con los datos del formulario
 
     else:
