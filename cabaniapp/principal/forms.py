@@ -1,5 +1,7 @@
 from django import forms
+from .models import ComplejoCabanias
 
-class ComplejoCabaniasForm(forms.Form):
-    id = forms.CharField(max_length=5)
-    nombre = forms.CharField(max_length=100)
+class ComplejoCabaniasForm(forms.ModelForm):
+    class Meta:
+        model = ComplejoCabanias
+        fields = ['nombre']
