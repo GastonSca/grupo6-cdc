@@ -32,7 +32,7 @@
       {% for complejo in complejos %}
       <tr>
         <td>{{ complejo.id }}</td>
-        <td>{{ complejo.nombre }}</td>
+        <td>{{ complejo.nombre|upper }}</td>
       </tr>
     {% endfor %}
     
