@@ -42,6 +42,7 @@
           <tr>
             <td>{{ cabania.id }}</td>
             <td>{{ cabania.nombre|upper }}</td>
+            <td><a class="cta" href="{% url 'listar_cabaniasID' cabania.id %}">Ver detalle</a></td>
           </tr>
         {% endfor %}
       {% endif %}
