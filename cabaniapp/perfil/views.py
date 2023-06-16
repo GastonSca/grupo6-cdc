@@ -29,7 +29,7 @@ def perfil(request):
         'perfil_form': contacto_form
     }
     
-    return render(request, "perfil/crear_perfil.html", context)
+    return render(request, "perfil/formulario_perfil.html", context)
 
 def listar_perfiles(request):
     perfiles = Perfil.objects.all()

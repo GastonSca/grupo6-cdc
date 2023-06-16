@@ -5,7 +5,7 @@ class ComplejoCabanias(models.Model):
     nombre = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.nombre
+        return f"ID: {self.id} - {self.nombre}"
     
 class Cabania(models.Model):
     id = models.AutoField(primary_key=True)
