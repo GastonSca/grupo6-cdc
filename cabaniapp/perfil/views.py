@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseNotAllowed
 from django.template import loader
 from django.contrib import messages
@@ -15,7 +15,7 @@ def perfil(request):
         if contacto_form.is_valid():
             perfil = contacto_form.save()
             messages.success(request, 'Hemos recibido tus datos')
-       
+            contacto_form = PerfilForm()
         else:
             messages.error(request, 'Por favor revisa los errores en el formulario')
     elif request.method == 'GET':
