@@ -13,20 +13,20 @@
 
                 <article class="about__icons">
                     <img src="{% static '/img/gif/perfil.gif' %}" class="about__icon">
-                    <a href="{% url 'perfil' %}" class="nav__links"><h3 class="about__title"> PERFIL</h3></a>
-                    <p class="about__paragrah">Configura tu perfil de administrador agregando todos los datos pertinentes.</p>
+                    <a href="{% url 'listar_perfiles' %}" class="nav__links"><h3 class="about__title"> PERFIL</h3></a>
+                    <p class="about__paragrah">Listar los perfiles existentes y agregar nuevas.</p>
                 </article>
 
                 <article class="about__icons">
                     <img src="{% static '/img/gif/hogar.gif' %}" class="about__icon">
-                    <a href="./admin-agregar-cabania.html" class="nav__links"><h3 class="about__title"> CABAÑAS</h3></a>
-                    <p class="about__paragrah">Coloca imagenes de tus cabañas y agrega informacion para tus clientes.</p>
+                    <a href="{% url 'listar_cabanias' %}" class="nav__links"><h3 class="about__title"> CABAÑAS</h3></a>
+                    <p class="about__paragrah">Lista y agrega informacion sobre las cabañas para tus clientes.</p>
                 </article>
                 
                 <article class="about__icons">
                     <img src="{% static '/img/gif/controlar.gif' %}" class="about__icon">
-                    <a href="./admin-contabilidad.html" class="nav__links"><h3 class="about__title"> CONTABILIDAD</h3></a>
-                    <p class="about__paragrah">Obtiene un informe detallado de los movimientos del complejo de cabañas</p>
+                    <a href="{% url 'listar_complejos' %}" class="nav__links"><h3 class="about__title"> COMPLEJOS</h3></a>
+                    <p class="about__paragrah">Lista y agrega nuevos complejos</p>
                 </article>
 
                 <article class="about__icons">

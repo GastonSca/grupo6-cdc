@@ -9,7 +9,7 @@
     <div class="container">
         <div class="forms-cabanias">
             <div class="perfil form-cabania">
-                <form name="perfilForm" id="perfilForm" action="{% url 'perfil' %}" method="POST">
+                <form name="perfilForm" id="perfilForm" action="{% url 'crear_perfil' %}" method="POST">
                     {% csrf_token%}
                     <legend>Perfil Administrador</legend>
                     <div class="datos">

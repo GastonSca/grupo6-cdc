@@ -1,0 +1,41 @@
+{% extends 'perfil/base.html' %}
+{% load static %}
+
+<main>
+
+    {% block contenido %}
+
+    <div class="container">
+        <div class="forms-cabanias">
+            <div class="perfil form-cabania">
+                    {% csrf_token%}
+                    <legend>Listado Perfiles</legend>
+                    
+                    <table>
+                        <tr>
+                            <th>ID</th>
+                            <th>Apellido</th>
+                            <th>Nombre</th>
+                            <th>DNI</th>
+                            <th>Nacimiento</th>
+                            <th>Telefono</th>
+                            <th>Nivel Aut</th>
+                        </tr>
+                    {% for perfil in perfiles %}
+                        <tr>
+                        <td>{{perfil.id}}</td>
+                        <td>{{perfil.apellido}}</td>
+                        <td>{{perfil.nombre}}</td>
+                        <td>{{perfil.dni}}</td>
+                        <td>{{perfil.fecha_nacimiento}}</td>
+                        <td>{{perfil.telefono}}</td>
+                        <td>{{perfil.nivelAutorizacion}}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                
+            </div>
+        </div>
+    </div>
+    {% endblock contenido %}
+</main>

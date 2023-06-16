@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseNotAllowed
 from django.template import loader
 from django.contrib import messages
 from perfil.forms import PerfilForm
+from .models import Perfil
 
 # Create your views here.
 
@@ -28,4 +29,8 @@ def perfil(request):
         'perfil_form': contacto_form
     }
     
-    return render(request, "perfil/perfil.html", context)
+    return render(request, "perfil/crear_perfil.html", context)
+
+def listar_perfiles(request):
+    perfiles = Perfil.objects.all()
+    return render(request, 'perfil/listar_perfiles.html', {'perfiles': perfiles})
