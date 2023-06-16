@@ -48,11 +48,14 @@ def crear_cabania(request):
     return render(request, 'cabania/formulario_cabania.html', {'form': form})
 
 
-def listar_cabanias(request):
+def listar_cabanias(request):    
     cabanias = Cabania.objects.all()
     return render(request, 'cabania/listar_cabanias.html', {'cabanias': cabanias})
 
 
 def listar_cabaniasID(request, id):
-    cabania = get_object_or_404(Cabania, id=id)
+    try:
+        cabania = Cabania.objects.get(id=id)
+    except Cabania.DoesNotExist:
+        cabania = None
     return render(request, 'cabania/listar_cabanias.html', {'cabania': cabania})

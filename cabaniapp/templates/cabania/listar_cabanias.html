@@ -25,27 +25,29 @@
       </div>
       
   </header>
-  <table>
-    <tr>
-      <th>ID</th>
-      <th>Nombre</th>  
-    </tr>
-    {% if cabania %}      
+  {% if cabania or cabanias %}
+    <table>
       <tr>
-        <td>{{ cabania.id }}</td>
-        <td>{{ cabania.nombre|upper }}</td>
+        <th>ID</th>
+        <th>Nombre</th>  
       </tr>
-    
-    {% else %}
-      <p>No se encontró la cabaña.</p>
-    {% endif %}
-    
-      {% for cabania in cabanias %}
-      <tr>
-        <td>{{ cabania.id }}</td>
-        <td>{{ cabania.nombre|upper }}</td>
-      </tr>
-    {% endfor %}
-    
-  </table>
+      
+      {% if cabania %}
+        <tr>
+          <td>{{ cabania.id }}</td>
+          <td>{{ cabania.nombre|upper }}</td>
+        </tr>
+      {% else %}
+        {% for cabania in cabanias %}
+          <tr>
+            <td>{{ cabania.id }}</td>
+            <td>{{ cabania.nombre|upper }}</td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+      
+    </table>
+  {% else %}
+    <p>No hay cabañas con los criterios seleccionados.</p>
+  {% endif %}
   <button type="reset" class="XSbutton" onclick="window.location.href='../'">Volver</button>
