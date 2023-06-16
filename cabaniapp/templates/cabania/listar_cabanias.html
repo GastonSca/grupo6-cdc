@@ -30,6 +30,15 @@
       <th>ID</th>
       <th>Nombre</th>  
     </tr>
+    {% if cabania %}      
+      <tr>
+        <td>{{ cabania.id }}</td>
+        <td>{{ cabania.nombre|upper }}</td>
+      </tr>
+    
+    {% else %}
+      <p>No se encontró la cabaña.</p>
+    {% endif %}
     
       {% for cabania in cabanias %}
       <tr>

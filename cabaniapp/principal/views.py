@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from django.urls import reverse
 from django.template import loader
@@ -51,3 +51,8 @@ def crear_cabania(request):
 def listar_cabanias(request):
     cabanias = Cabania.objects.all()
     return render(request, 'cabania/listar_cabanias.html', {'cabanias': cabanias})
+
+
+def listar_cabaniasID(request, id):
+    cabania = get_object_or_404(Cabania, id=id)
+    return render(request, 'cabania/listar_cabanias.html', {'cabania': cabania})
