@@ -33,6 +33,7 @@ class PerfilForm(forms.Form):
     dni = forms.CharField(label='Dni')
     fecha_nacimiento = forms.DateField(label='Nacimiento')
     telefono = forms.CharField(label='Telefono')
+    nivelAutorizacion = forms.IntegerField(label='nivelAutorizacion')
    
     nombre = forms.CharField(
         label='Nombre',
@@ -80,6 +81,11 @@ class PerfilForm(forms.Form):
                                     'placeholder': 'cod Area - Numero (Ej 11-12345678)'})
     )
 
+    nivelAutorizacion = forms.IntegerField(
+        label='Nivel de Autorización',
+        widget=forms.TextInput(attrs={'class': 'datos', 'placeholder': 'Del 1 al 5'})
+    )
+
     def save(self, commit=True):
         perfil = Perfil(
             nombre=self.cleaned_data['nombre'],
@@ -87,6 +93,7 @@ class PerfilForm(forms.Form):
             dni=self.cleaned_data['dni'],
             fecha_nacimiento=self.cleaned_data['fecha_nacimiento'],
             telefono=self.cleaned_data['telefono'],
+            nivelAutorizacion=self.cleaned_data['nivelAutorizacion']
         )
         if commit:
             perfil.save()
