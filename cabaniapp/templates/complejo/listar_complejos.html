@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+      
+{% extends 'perfil/base.html' %}
+{% load static %}
+{% block contenido %}
+
+<main>
+    
+  
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>  
+    </tr>
+    
+      {% for complejo in complejos %}
+      <tr>
+        <td>{{ complejo.id }}</td>
+        <td>{{ complejo.nombre|upper }}</td>
+      </tr>
+    {% endfor %}
+    
+  </table>
+  <a href="{% url 'crear_complejo' %}">Nuevo</a>
+  {% endblock contenido %}
+</main>

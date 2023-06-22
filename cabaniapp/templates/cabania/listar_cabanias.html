@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+      
+{% extends 'perfil/base.html' %}
+{% load static %}
+{% block contenido %}
+
+
+<main>
+    {% if cabania or cabanias %}
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>  
+      </tr>
+      
+      {% if cabania %}
+        <tr>
+          <td>{{ cabania.id }}</td>
+          <td>{{ cabania.nombre|upper }}</td>
+        </tr>
+      {% else %}
+        {% for cabania in cabanias %}
+          <tr>
+            <td>{{ cabania.id }}</td>
+            <td>{{ cabania.nombre|upper }}</td>
+            <td><a class="cta" href="{% url 'listar_cabaniasID' cabania.id %}">Ver detalle</a></td>
+          </tr>
+        {% endfor %}
+      {% endif %}
+      
+    </table>
+  {% else %}
+    <p>No hay cabañas con los criterios seleccionados.</p>
+  {% endif %}
+  <a href="{% url 'crear_cabania' %}">Nueva</a>
+  {% endblock contenido %}
+</main>

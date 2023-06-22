@@ -1,6 +1,8 @@
 from django import forms
 import re
 from django.forms import ValidationError
+from .models import Perfil
+from .models import PerfilCliente
 
 def validar_dni(value):
     if len(value) != 8:
@@ -32,6 +34,7 @@ class PerfilForm(forms.Form):
     dni = forms.CharField(label='Dni')
     fecha_nacimiento = forms.DateField(label='Nacimiento')
     telefono = forms.CharField(label='Telefono')
+    nivelAutorizacion = forms.IntegerField(label='nivelAutorizacion')
    
     nombre = forms.CharField(
         label='Nombre',
@@ -59,7 +62,7 @@ class PerfilForm(forms.Form):
     )
     fecha_nacimiento = forms.DateField(
         label='Fecha de Nacimiento',
-        widget=forms.DateInput(attrs={'class': 'datos', 'placeholder': 'DD-MM-YYYY'})
+        widget=forms.DateInput(attrs={'class': 'datos', 'placeholder': 'DD/MM/YYYY'})
     )
     
  
@@ -69,15 +72,41 @@ class PerfilForm(forms.Form):
         attrs={'class': 'datos', 'placeholder': 'Dni' , 'for':'dniAdmin', 'id':'lblApellidoAdmin'}
     ),
     validators=(validar_dni,),
-)
+    )
 
     telefono = forms.CharField(
         label='Telefono',
         required=False,
         validators=(validar_telefono,),
         widget=forms.TextInput(attrs={'class': 'datos',
-                                    'placeholder': 'cod Area- Numero'})
+                                    'placeholder': 'cod Area - Numero (Ej 11-12345678)'})
     )
+
+    nivelAutorizacion = forms.IntegerField(
+        label='Nivel de Autorización',
+        widget=forms.TextInput(attrs={'class': 'datos', 'placeholder': 'Del 1 al 5'})
+    )
+
+    def save(self, commit=True):
+        perfil = Perfil(
+            nombre=self.cleaned_data['nombre'],
+            apellido=self.cleaned_data['apellido'],
+            dni=self.cleaned_data['dni'],
+            fecha_nacimiento=self.cleaned_data['fecha_nacimiento'],
+            telefono=self.cleaned_data['telefono'],
+            nivelAutorizacion=self.cleaned_data['nivelAutorizacion']
+        )
+        if commit:
+            perfil.save()
+        return perfil
+    
+class PerfilClienteForm(forms.ModelForm):
+    class Meta:
+        model = PerfilCliente
+        fields = '__all__'
+
+
+
 '''
     def clean_mensaje(self):
         data = self.cleaned_data['mensaje']

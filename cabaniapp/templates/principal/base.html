@@ -27,13 +27,17 @@
 
             <ul class="nav__link nav__link--menu">
                 <li class="nav__items">
-                    <a href="{% url 'perfil' %}" class="nav__links">Perfil</a>
+                    <!--a href="{% url 'listar_perfiles' %}" class="nav__links">Perfiles</a-->
+                     <a href="{% url 'crear_perfil' %}?vista=crear_perfil&titulo=Perfil%20Administrador" class="nav__links">Perfiles</a>
+                </li>                
+                <li class="nav__items">
+                    <a href="{% url 'listar_complejos' %}" class="nav__links">Complejos</a>
                 </li>
                 <li class="nav__items">
-                    <a href="./admin-agregar-cabania.html" class="nav__links">Cabañas</a>
+                    <a href="{% url 'listar_cabanias' %}" class="nav__links">Cabañas</a>
                 </li>
                 <li class="nav__items">
-                    <a href="./admin-contabilidad.html" class="nav__links">Contabilidad</a>
+                    <a href="{% url 'perfil_cliente' %}?vista=perfil_cliente&titulo=Perfil%20del%20Cliente" class="nav__links">Clientes</a>
                 </li>
                 <li class="nav__items">
                     <a href="./admin-agenda.html" class="nav__links">Agenda</a>

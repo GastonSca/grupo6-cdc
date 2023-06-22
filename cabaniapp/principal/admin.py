@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import ComplejoCabanias, Cabania, Servicio
 
-# Register your models here.
+admin.site.register(ComplejoCabanias)
+admin.site.register(Cabania)
+admin.site.register(Servicio)
+

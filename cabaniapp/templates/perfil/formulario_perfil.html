@@ -1,0 +1,82 @@
+{% extends 'perfil/base.html' %}
+{% load static %}
+
+<main>
+{% block contenido %}
+
+
+    {% for perfil in perfiles %}
+    <div class="row">
+      <div class="col-lg-6 mx-auto">
+        <div class="card text-center" style="background-color: white;">
+          <div class="card-header text-start">
+            Cliente:
+          </div>
+          <div class="card-body">
+            <h4 class="card-title text-start">{{perfil.nombre}} {{perfil.apellido}}</h4>
+            <table>
+              <tr>
+                <th style="padding-right: 10px;">DNI</th>
+                <th style="padding-right: 10px;">Nacimiento</th>
+                <th style="padding-right: 10px;">Telefono</th>
+                <th style="padding-right: 10px;">Nivel Aut</th>
+              </tr>
+              <tr>
+                <td style="padding-right: 10px;">{{perfil.dni}}</td>
+                <td style="padding-right: 10px;">{{perfil.fecha_nacimiento}}</td>
+                <td style="padding-right: 10px;">{{perfil.telefono}}</td>
+                <td style="padding-right: 10px;">{{perfil.nivelAutorizacion}}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card-footer text-muted text-end"></div>
+        </div>
+      </div>
+    </div>
+    
+    
+    {% endfor %}
+   
+
+    <div class="container">
+        <div class="forms-cabanias">
+            <div class="perfil form-cabania">
+                
+                <form name="perfilForm" id="perfilForm" action="{{ tipo_perfil }}" method="POST">
+                    {% csrf_token%}
+                    <legend>{{ titulo_perfil }} </legend>
+                    <div class="datos">
+                        {% if mensaje %}
+                        <div class="alert alert-success" role="alert">
+                            {{mensaje}}
+                        </div>
+                        {% endif %}
+
+                        {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}" role="alert">
+                            {{message}}
+                        </div>
+                        {% endfor%}
+                        <!--{{perfil_form.as_p}} lo muestra dentro de p-->
+                        <!--{{perfil_form.as_ul}} lo muestra dentro de ul-->
+                        <!--{{perfil_form.as_table}} lo muestra dentro de tablas
+                        {{perfil_form}}-->
+                    </div>
+
+                    {% for campo in perfil_form %}
+
+                    <label for="name">{{ campo.label }}</label>
+                    {{campo}}
+
+                    <div>{{campo.errors}}</div>
+
+                    {% endfor %}
+
+                    <button id="boton" type="submit" value="guardar" onclick="validarPerfilAdmin()" >AGREGAR </button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    {% endblock contenido %}
+</main>

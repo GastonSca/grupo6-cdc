@@ -9,6 +9,12 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.services-columns {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 20px;
+  }
+
 .background-style {
     background: #bdc3c7;
     /* fallback for old browsers */

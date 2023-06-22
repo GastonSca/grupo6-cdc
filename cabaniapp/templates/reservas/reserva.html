@@ -1,0 +1,28 @@
+
+{% extends 'perfil/base.html' %}
+{% load static %}
+{% block contenido %}
+<main class="background-style">
+    <div class="container">
+        <div class="forms-cabanias">
+            <div class="perfil form-cabania" id="reservas">
+                <form name="reservaForm"  action="reservas" method="POST">
+                    {% csrf_token %}
+                    <legend>Nueva Reserva</legend>
+                  
+                    {% for campo in reserva_form %}
+
+                    <label for="name">{{ campo.label }}</label>
+                    {{campo}}
+
+                    <div>{{campo.errors}}</div>
+
+                    {% endfor %}
+                    <button id="boton" type="submit" value="guardar">AGREGAR </button>
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock contenido %}
