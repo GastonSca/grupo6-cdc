@@ -38,4 +38,5 @@ class Reserva(models.Model):
 
 
     def __str__(self):
-        return f"Alquiler de {self.cabana} en {self.complejo}"
+        return f"Alquiler de {self.id_cabania} en {self.id_complejo} por {self.cliente}"
+

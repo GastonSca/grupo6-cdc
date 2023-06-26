@@ -82,4 +82,5 @@ def reservas (request):
         'reserva_form': reserva_form,
         'reservas': reservas
     }
-    return render(request, 'reservas/reserva.html', context)
+    
+    return render(request,'reservas/reserva.html',context)

@@ -21,3 +21,6 @@ class Perfil(Persona): #Relacion 1 a 1. Cada Perfil es una Persona
 class PerfilCliente(Persona):
     antecedentes = models.CharField(max_length=150)
     
+    def __str__(self):
+        return f'{self.nombre} {self.apellido}'
+

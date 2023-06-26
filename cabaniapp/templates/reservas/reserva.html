@@ -3,10 +3,42 @@
 {% load static %}
 {% block contenido %}
 <main class="background-style">
+
+    {% for reserva in reservas %}
+    <div class="row">
+      <div class="col-lg-6 mx-auto">
+        <div class="card text-center" style="background-color: white;">
+          <div class="card-header text-start">
+            Reservas
+          </div>
+          <div class="card-body">
+            <h4 class="card-title text-start">Complejo: {{reserva.id_complejo}}</h4>
+            <table>
+              <tr>
+                <th style="padding-right: 10px;">Cliente</th>
+                <th style="padding-right: 10px;">Cabaña</th>
+                <th style="padding-right: 10px;">Fecha Entrada</th>
+              </tr>
+              <tr>
+                <td style="padding-right: 10px;">{{reserva.cliente}}</td>
+                <td style="padding-right: 10px;"> {{reserva.id_cabania}}</td>
+                <td style="padding-right: 10px;">{{reserva.fecha_entrada}}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card-footer text-muted text-end"></div>
+        </div>
+      </div>
+    </div>
+    
+    
+    {% endfor %}
+
+
     <div class="container">
         <div class="forms-cabanias">
             <div class="perfil form-cabania" id="reservas">
-                <form name="reservaForm"  action="reservas" method="POST">
+                <form name="reservaForm"  action="/principal/reservas/" method="POST">
                     {% csrf_token %}
                     <legend>Nueva Reserva</legend>
                   
