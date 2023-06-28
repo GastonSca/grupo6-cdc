@@ -24,13 +24,13 @@ class ReservaForm(forms.ModelForm):
 
 
 class LoginForm(forms.Form):
-    email = forms.EmailField(label='Email', max_length=100)
+    usuario = forms.CharField(label='usuario', max_length=100)
     contraseña = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
 
 class RegistroForm(forms.ModelForm):
     class Meta:
         model = Usuario
-        fields = ['nombre', 'email', 'contraseña']
+        fields = ['nombre', 'usuario', 'contraseña']
         widgets = {
             'contraseña': forms.PasswordInput()
         }

@@ -43,7 +43,7 @@ class Reserva(models.Model):
 
 class Usuario(models.Model):
     nombre = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)
+    usuario = models.CharField(max_length=100)
     contraseña = models.CharField(max_length=100)
 
     def __str__(self):

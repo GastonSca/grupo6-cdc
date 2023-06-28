@@ -7,6 +7,8 @@ from django.contrib import messages
 from .models import ComplejoCabanias, Servicio, Cabania,Reserva
 # Create your views here.
 from .forms import LoginForm, RegistroForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 
 def index(request):
     return render(request,"principal/index.html",{})
@@ -61,6 +63,7 @@ def listar_cabaniasID(request, id):
         cabania = None
     return render(request, 'cabania/listar_cabanias.html', {'cabania': cabania})
 
+@login_required
 def reservas (request):
     reservas = Reserva.objects.all()
     vista = ''
@@ -90,23 +93,22 @@ def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            email = form.cleaned_data['email']
-            contraseña = form.cleaned_data['contraseña']
+            
+            username = form.cleaned_data['usuario']
+            password = form.cleaned_data['contraseña'] 
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                return render(request, 'login/login.html', {'mensaje': 'Inicio de sesión correctoooo'})
+            else:
+                return render(request, 'login/login.html', {'mensaje': 'Inicio de sesión erroneo'})
             # Realizar lógica de autenticación
             # ...
-            return render(request, 'login/login.html', {'mensaje': 'Inicio de sesión exitoso'})
+                
     else:
         form = LoginForm()
     
     return render(request, 'login/login.html', {'form': form})
 
-def registro(request):
-    if request.method == 'POST':
-        form = RegistroForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, 'login/registro.html', {'mensaje': 'Registro exitoso'})
-    else:
-        form = RegistroForm()
-    
-    return render(request, 'login/registro.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
