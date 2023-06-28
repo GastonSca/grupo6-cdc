@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>Iniciar sesión</title>
+</head>
+<body>
+    <h1>Iniciar sesión</h1>
+    {% if mensaje %}
+        <p>{{ mensaje }}</p>
+    {% else %}
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Iniciar sesión">
+        </form>
+    {% endif %}
+</body>
+</html>

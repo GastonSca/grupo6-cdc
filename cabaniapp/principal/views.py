@@ -6,6 +6,7 @@ from .forms import ComplejoCabaniasForm, CabaniasForm,ReservaForm
 from django.contrib import messages
 from .models import ComplejoCabanias, Servicio, Cabania,Reserva
 # Create your views here.
+from .forms import LoginForm, RegistroForm
 
 def index(request):
     return render(request,"principal/index.html",{})
@@ -84,3 +85,28 @@ def reservas (request):
     }
     
     return render(request,'reservas/reserva.html',context)
+
+def login(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            contraseña = form.cleaned_data['contraseña']
+            # Realizar lógica de autenticación
+            # ...
+            return render(request, 'login/login.html', {'mensaje': 'Inicio de sesión exitoso'})
+    else:
+        form = LoginForm()
+    
+    return render(request, 'login/login.html', {'form': form})
+
+def registro(request):
+    if request.method == 'POST':
+        form = RegistroForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'login/registro.html', {'mensaje': 'Registro exitoso'})
+    else:
+        form = RegistroForm()
+    
+    return render(request, 'login/registro.html', {'form': form})

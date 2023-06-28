@@ -1,5 +1,5 @@
 from django import forms
-from .models import ComplejoCabanias, Cabania, Servicio ,Reserva
+from .models import ComplejoCabanias, Cabania, Servicio ,Reserva, Usuario
 
 class ComplejoCabaniasForm(forms.ModelForm):
     class Meta:
@@ -21,3 +21,16 @@ class ReservaForm(forms.ModelForm):
     class Meta:
         model = Reserva
         fields = ['id_complejo', 'id_cabania', 'cliente', 'fecha_entrada', 'fecha_salida']
+
+
+class LoginForm(forms.Form):
+    email = forms.EmailField(label='Email', max_length=100)
+    contraseña = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
+
+class RegistroForm(forms.ModelForm):
+    class Meta:
+        model = Usuario
+        fields = ['nombre', 'email', 'contraseña']
+        widgets = {
+            'contraseña': forms.PasswordInput()
+        }

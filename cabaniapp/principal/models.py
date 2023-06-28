@@ -41,3 +41,10 @@ class Reserva(models.Model):
     def __str__(self):
         return f"Alquiler de {self.id_cabania} en {self.id_complejo} por {self.cliente}"
 
+class Usuario(models.Model):
+    nombre = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100)
+    contraseña = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.nombre

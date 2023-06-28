@@ -11,4 +11,5 @@ urlpatterns = [
     path('listar_cabanias/', views.listar_cabanias, name='listar_cabanias'),
     path('reservas/', views.reservas, name='reservas'),
     path('listar_cabanias/<int:id>/', views.listar_cabaniasID, name='listar_cabaniasID'),
+    path('login', views.login, name='login'),
 ]
