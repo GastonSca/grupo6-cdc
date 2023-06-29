@@ -66,34 +66,31 @@ def listar_cabaniasID(request, id):
 
 @login_required
 def reservas (request):
-    if request.user.is_authenticated:
-            
-        reservas = Reserva.objects.all()
-        vista = ''
-        titulo = ''
-        mensaje = None
-        if request.method == 'POST':
-            reserva_form = ReservaForm(request.POST)
-            if reserva_form.is_valid():
-                reserva_cliente = reserva_form.save()
-                messages.success(request, 'Hemos recibido tus datos')
-                reserva_form = ReservaForm()
-            else:
-                messages.error(request, 'Por favor revisa los errores en el formulario')
-        elif request.method == 'GET':
-            reserva_form= ReservaForm()
-        else:
+           
+    reservas = Reserva.objects.all()
+    vista = ''
+    titulo = ''
+    mensaje = None
+    if request.method == 'POST':
+        reserva_form = ReservaForm(request.POST)
+        if reserva_form.is_valid():
+            reserva_cliente = reserva_form.save()
+            messages.success(request, 'Hemos recibido tus datos')
             reserva_form = ReservaForm()
-            
-        context = {
-            'reserva_form': reserva_form,
-            'reservas': reservas
-        }
+        else:
+            messages.error(request, 'Por favor revisa los errores en el formulario')
+    elif request.method == 'GET':
+        reserva_form= ReservaForm()
+    else:
+        reserva_form = ReservaForm()
         
-        return render(request,'reservas/reserva.html',context)
-    #else:
-        #form = LoginForm()    
-        #return render(request, 'login/login.html', {'form': form})
+    context = {
+        'reserva_form': reserva_form,
+        'reservas': reservas
+    }
+    
+    return render(request,'reservas/reserva.html',context)
+     
     
 
 def loginSession(request):
