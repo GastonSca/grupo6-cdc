@@ -130,5 +130,7 @@ def loginSession(request):
     return render(request, 'login/login.html', {'form': form})
 
 
-def logout_view(request):
+def logoutSession(request):
     logout(request)
+    form = LoginForm()
+    return render(request, 'login/login.html', {'form': form})

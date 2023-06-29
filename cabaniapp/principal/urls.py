@@ -12,4 +12,5 @@ urlpatterns = [
     path('reservas/', views.reservas, name='reservas'),
     path('listar_cabanias/<int:id>/', views.listar_cabaniasID, name='listar_cabaniasID'),
     path('login', views.loginSession, name='login'),
+    path('logout', views.logoutSession, name='logout'),
 ]
