@@ -4,11 +4,12 @@ from django.urls import reverse
 from django.template import loader
 from .forms import ComplejoCabaniasForm, CabaniasForm,ReservaForm
 from django.contrib import messages
-from .models import ComplejoCabanias, Servicio, Cabania,Reserva
+from .models import ComplejoCabanias, Servicio, Cabania,Reserva, Usuario
 # Create your views here.
 from .forms import LoginForm, RegistroForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User 
 
 def index(request):
     return render(request,"principal/index.html",{})
@@ -65,40 +66,62 @@ def listar_cabaniasID(request, id):
 
 @login_required
 def reservas (request):
-    reservas = Reserva.objects.all()
-    vista = ''
-    titulo = ''
-    mensaje = None
-    if request.method == 'POST':
-        reserva_form = ReservaForm(request.POST)
-        if reserva_form.is_valid():
-            reserva_cliente = reserva_form.save()
-            messages.success(request, 'Hemos recibido tus datos')
-            reserva_form = ReservaForm()
+    if request.user.is_authenticated:
+            
+        reservas = Reserva.objects.all()
+        vista = ''
+        titulo = ''
+        mensaje = None
+        if request.method == 'POST':
+            reserva_form = ReservaForm(request.POST)
+            if reserva_form.is_valid():
+                reserva_cliente = reserva_form.save()
+                messages.success(request, 'Hemos recibido tus datos')
+                reserva_form = ReservaForm()
+            else:
+                messages.error(request, 'Por favor revisa los errores en el formulario')
+        elif request.method == 'GET':
+            reserva_form= ReservaForm()
         else:
-            messages.error(request, 'Por favor revisa los errores en el formulario')
-    elif request.method == 'GET':
-        reserva_form= ReservaForm()
-    else:
-        reserva_form = ReservaForm()
+            reserva_form = ReservaForm()
+            
+        context = {
+            'reserva_form': reserva_form,
+            'reservas': reservas
+        }
         
-    context = {
-        'reserva_form': reserva_form,
-        'reservas': reservas
-    }
+        return render(request,'reservas/reserva.html',context)
+    #else:
+        #form = LoginForm()    
+        #return render(request, 'login/login.html', {'form': form})
     
-    return render(request,'reservas/reserva.html',context)
 
-def login(request):
+def loginSession(request):
+    
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
             
-            username = form.cleaned_data['usuario']
-            password = form.cleaned_data['contraseña'] 
-            user = authenticate(request, username=username, password=password)
+            usu = form.cleaned_data['usuario']
+            passw  = form.cleaned_data['contraseña'] 
+            user = authenticate(request, username=usu, password=passw)
             if user is not None:
-                return render(request, 'login/login.html', {'mensaje': 'Inicio de sesión correctoooo'})
+
+                user = User.objects.get(username=usu)
+
+                # Iniciar sesión del usuario
+                login(request, user)
+                
+                reserva_form = ReservaForm()
+        
+                context = {
+                    'reserva_form': reserva_form,
+                    'reservas': reservas
+                }
+                
+                return render(request,'reservas/reserva.html',context)
+                # Redirigir a una página después de iniciar sesión correctamente
+                #return render(request, 'login/login.html', {'mensaje': 'Inicio de sesión correccctooooo'})
             else:
                 return render(request, 'login/login.html', {'mensaje': 'Inicio de sesión erroneo'})
             # Realizar lógica de autenticación
