@@ -23,17 +23,31 @@
       </div>
     
   </header> 
-    {% if mensaje %}
-        <p>{{ mensaje }}</p>
-        <button type="reset" class="XSbutton" onclick="window.location.href='/'">Volver</button>
-  
-    {% else %}
-        <form method="POST" action="{% url 'login' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Iniciar sesión">
-            
-        </form>
-    {% endif %}
+    
+
+        <div class="container">
+            <div class="forms-cabanias">
+                <div class="perfil form-cabania" id="reservas">
+
+                    {% if mensaje %}
+                    <p>{{ mensaje }}</p>
+                    <button type="reset" class="XSbutton" onclick="window.location.href='/'">Volver</button>
+              
+                    {% else %}
+
+                    <form method="POST" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Iniciar sesión">
+                        
+                    </form>
+                {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+
+
+        
 </body>
 </html>
