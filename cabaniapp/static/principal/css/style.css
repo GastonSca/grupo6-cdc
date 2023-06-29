@@ -58,6 +58,13 @@ body {
 
 
 /* Nav */
+table, tr, th, td{
+    align-self: center;
+    margin: auto;
+    border: 1px solid #0000008c;
+}
+
+
 
 .nav {
     --padding-container: 0;
@@ -130,6 +137,8 @@ body {
     display: inline-block;
     background-color: #f98920;
     justify-self: center;
+    margin: auto;
+    
     color: #fff;
     text-decoration: none;
     padding: 13px 30px;

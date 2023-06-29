@@ -7,9 +7,16 @@
 {% block contenido %}
 
 <main>
-    
+  
+  <div class="conteXS">
+    <a href="{% url 'crear_complejo' %}" class="cta">Nuevo complejo </a>
+  </div>
+  
   
   <table>
+   
+      
+   
     <tr>
       <th>ID</th>
       <th>Nombre</th>  
@@ -23,6 +30,6 @@
     {% endfor %}
     
   </table>
-  <a href="{% url 'crear_complejo' %}">Nuevo</a>
+
   {% endblock contenido %}
 </main>

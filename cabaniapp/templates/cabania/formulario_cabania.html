@@ -22,7 +22,6 @@
       </div>
     
   </header>
-
   <form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
@@ -31,4 +30,4 @@
     <button type="reset" class="XSbutton">Reiniciar</button>
     <button type="reset" class="XSbutton" onclick="window.location.href='../'">Volver</button>
   
-</form>
+  </form>

@@ -8,6 +8,10 @@
 
 
 <main>
+  <div class="conteXS">
+    <a href="{% url 'crear_cabania' %}" class="cta">Nueva cabaña</a>
+  </div>
+  
     {% if cabania or cabanias %}
     <table>
       <tr>
@@ -34,6 +38,6 @@
   {% else %}
     <p>No hay cabañas con los criterios seleccionados.</p>
   {% endif %}
-  <a href="{% url 'crear_cabania' %}">Nueva</a>
+  
   {% endblock contenido %}
 </main>
