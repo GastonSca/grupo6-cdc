@@ -14,15 +14,21 @@
   
     {% if cabania or cabanias %}
     <table>
+      
+      
+      
+      {% if cabania %}
       <tr>
         <th>ID</th>
         <th>Nombre</th>  
+        <th>Dormitorios</th>  
+        <th>Personas</th>  
       </tr>
-      
-      {% if cabania %}
         <tr>
           <td>{{ cabania.id }}</td>
           <td>{{ cabania.nombre|upper }}</td>
+          <td>{{ cabania.cantDormitorios }}</td>
+          <td>{{ cabania.cantPersonas }}</td>
         </tr>
       {% else %}
         {% for cabania in cabanias %}
